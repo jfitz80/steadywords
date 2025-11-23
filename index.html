@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SteadyWords – Real Affirmations for Exhausted Humans</title>
+  <meta name="description" content="SteadyWords is a grounded affirmation app for people who are actually exhausted. No cheesy quotes. Just honest, gentle support in under 3 minutes a day." />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #0b1020;
+      --accent: #f5a623;
+      --accent-soft: rgba(245, 166, 35, 0.1);
+      --text: #f7f7ff;
+      --muted: #a5acc7;
+      --border: #252b3f;
+      --danger: #ff6b6b;
+      --radius-lg: 18px;
+      --radius-xl: 28px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.45);
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #141a33, #050816 55%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Header */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 8, 22, 0.92),
+        rgba(5, 8, 22, 0.85),
+        transparent
+      );
+      border-bottom: 1px solid rgba(37, 43, 63, 0.7);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.5rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .logo-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #ffe9c2, #f5a623);
+      box-shadow: 0 0 25px rgba(245, 166, 35, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #2d1902;
+      font-weight: 700;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      color: var(--muted);
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--text);
+      opacity: 0.9;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 166, 35, 0.7);
+      background: radial-gradient(circle at top left, #f5a62322, #141827 65%);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        background 0.15s ease;
+      text-decoration: none;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.6);
+      background: radial-gradient(circle at top left, #f5a62333, #141827 70%);
+    }
+
+    .nav-login {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Hero */
+
+    main {
+      flex: 1;
+    }
+
+    .hero {
+      padding: 3.5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 2.8rem;
+      align-items: center;
+    }
+
+    @media (min-width: 840px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      }
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 166, 35, 0.2);
+      background: radial-gradient(circle at left, #f5a62322, transparent 70%);
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-kicker-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #5cffc8;
+      box-shadow: 0 0 12px rgba(92, 255, 200, 0.9);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(90deg, #f5d37b, #f5a623);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      color: var(--muted);
+      max-width: 34rem;
+      font-size: 0.98rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+      margin-bottom: 0.9rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.8rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #f5a623, #f57f23);
+      color: #2b1300;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        filter 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.04);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.78rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(9, 14, 32, 0.7);
+      color: var(--muted);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: border 0.15s ease, background 0.15s ease, color 0.15s ease,
+        transform 0.15s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(245, 166, 35, 0.6);
+      background: rgba(12, 18, 40, 0.95);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .hero-small {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero-small span {
+      color: #ffe9c2;
+    }
+
+    .hero-card {
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top left, #1c233f, #050816 70%);
+      border: 1px solid rgba(118, 128, 173, 0.4);
+      box-shadow: var(--shadow-soft);
+      padding: 1.4rem 1.4rem 1.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-tag {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-card-quote {
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-card-explainer {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      font-size: 0.75rem;
+    }
+
+    .hero-chip {
+      padding: 0.22rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(118, 128, 173, 0.7);
+      background: rgba(5, 8, 22, 0.8);
+      color: var(--muted);
+    }
+
+    .hero-orbit {
+      position: absolute;
+      inset: auto -40px -35px auto;
+      width: 170px;
+      height: 170px;
+      border-radius: 999px;
+      background: radial-gradient(circle at top, #f5a62344, transparent 70%);
+      filter: blur(4px);
+      opacity: 0.65;
+    }
+
+    /* Sections shared */
+
+    section {
+      padding: 2.8rem 0;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 32rem;
+      margin-bottom: 1.8rem;
+    }
+
+    /* Problem section */
+
+    .problem {
+      border-top: 1px solid var(--border);
+    }
+
+    .problem-inner {
+      max-width: 40rem;
+    }
+
+    .problem-list {
+      margin: 1.2rem 0 1.3rem;
+      padding-left: 1.1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .problem-list li {
+      margin-bottom: 0.4rem;
+    }
+
+    .problem-highlight {
+      padding: 0.9rem 1rem;
+      border-radius: var(--radius-lg);
+      background: rgba(11, 16, 32, 0.95);
+      border: 1px solid rgba(87, 96, 144, 0.7);
+      font-size: 0.88rem;
+      color: #d0d5ff;
+    }
+
+    /* How it works */
+
+    .how-grid {
+      display: grid;
+      gap: 1.4rem;
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 720px) {
+      .how-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .how-card {
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1rem;
+      background: rgba(9, 14, 32, 0.95);
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .how-step-badge {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 166, 35, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #ffe9c2;
+      margin-bottom: 0.5rem;
+    }
+
+    .how-card-title {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      font-size: 0.95rem;
+    }
+
+    .how-card-text {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Features grid */
+
+    .features-grid {
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    @media (min-width: 800px) {
+      .features-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .feature-card {
+      border-radius: var(--radius-lg);
+      padding: 1rem 1rem 0.9rem;
+      background: rgba(9, 14, 32, 0.95);
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      min-height: 150px;
+    }
+
+    .feature-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #f5d37b;
+    }
+
+    .feature-title {
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+
+    .feature-text {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Who it's for */
+
+    .who-list {
+      display: grid;
+      gap: 0.55rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    @media (min-width: 720px) {
+      .who-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .who-item {
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+
+    .who-bullet {
+      margin-top: 0.28rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #f5a623;
+    }
+
+    /* Testimonials */
+
+    .testimonials {
+      border-top: 1px solid var(--border);
+    }
+
+    .test-grid {
+      display: grid;
+      gap: 1.2rem;
+      margin-top: 0.8rem;
+    }
+
+    @media (min-width: 720px) {
+      .test-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .test-card {
+      border-radius: var(--radius-lg);
+      padding: 1rem 1rem 0.9rem;
+      background: rgba(9, 14, 32, 0.95);
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .test-quote {
+      margin-bottom: 0.55rem;
+    }
+
+    .test-name {
+      font-size: 0.82rem;
+      color: #d0d5ff;
+    }
+
+    /* Pricing */
+
+    .pricing {
+      border-top: 1px solid var(--border);
+    }
+
+    .pricing-grid {
+      display: grid;
+      gap: 1.3rem;
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 800px) {
+      .pricing-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .pricing-card {
+      border-radius: var(--radius-xl);
+      padding: 1.4rem 1.2rem 1.1rem;
+      background: rgba(9, 14, 32, 0.98);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-card.featured {
+      border-color: rgba(245, 166, 35, 0.9);
+      box-shadow: var(--shadow-soft);
+      background: radial-gradient(circle at top, #f5a6231f, #050816 65%);
+    }
+
+    .pricing-name {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .pricing-tagline {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .pricing-price {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .pricing-price span {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .pricing-list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .pricing-list li {
+      margin-bottom: 0.35rem;
+      display: flex;
+      gap: 0.45rem;
+      align-items: flex-start;
+    }
+
+    .pricing-bullet {
+      margin-top: 0.28rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #f5a623;
+      flex-shrink: 0;
+    }
+
+    .pricing-cta {
+      margin-top: 0.7rem;
+    }
+
+    .pricing-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    .badge-pill {
+      position: absolute;
+      top: 0.9rem;
+      right: 1rem;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 166, 35, 0.7);
+      background: rgba(5, 8, 22, 0.9);
+      color: #f5d37b;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .btn-pricing-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.15s ease, border 0.15s ease;
+      width: 100%;
+    }
+
+    .btn-pricing-outline:hover {
+      border-color: rgba(245, 166, 35, 0.7);
+      background: rgba(14, 20, 44, 0.9);
+    }
+
+    .btn-pricing-solid {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 1.2rem;
+      border-radius: 999px;
+      border: none;
+      width: 100%;
+      background: linear-gradient(135deg, #f5a623, #f57f23);
+      color: #2b1300;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        filter 0.15s ease;
+    }
+
+    .btn-pricing-solid:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    /* FAQ */
+
+    .faq-grid {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 1.2rem;
+    }
+
+    .faq-item {
+      border-radius: var(--radius-lg);
+      padding: 0.9rem 1rem;
+      background: rgba(9, 14, 32, 0.95);
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .faq-a {
+      color: var(--muted);
+    }
+
+    /* Final CTA */
+
+    .final-cta {
+      text-align: center;
+    }
+
+    .final-cta p {
+      max-width: 30rem;
+      margin: 0.4rem auto 1.2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.3rem 0 1.8rem;
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    /* Responsive tweaks */
+
+    @media (max-width: 640px) {
+      nav .hide-on-mobile {
+        display: none;
+      }
+
+      .header-inner {
+        padding-inline: 1rem;
+      }
+
+      .hero {
+        padding-top: 2.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header>
+      <div class="header-inner">
+        <a href="#top" class="logo">
+          <div class="logo-mark">SW</div>
+          <span>SteadyWords</span>
+        </a>
+
+        <nav>
+          <a href="#features" class="hide-on-mobile">Features</a>
+          <a href="#how-it-works" class="hide-on-mobile">How it works</a>
+          <a href="#pricing" class="hide-on-mobile">Pricing</a>
+          <a href="#faq" class="hide-on-mobile">FAQ</a>
+          <a href="#" class="nav-login">Login</a>
+          <a href="#final-cta" class="nav-cta">
+            <span>Get started</span>
+            <span>→</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="hero-kicker">
+              <div class="hero-kicker-dot"></div>
+              Gentle support for exhausted humans
+            </div>
+            <h1 class="hero-title">
+              Real affirmations for people who are
+              <span class="hero-highlight">actually exhausted</span>
+            </h1>
+            <p class="hero-subtitle">
+              Not rainbow quotes. Not robotic voiceovers. Just honest, grounded support for people
+              juggling work, family, and everything in between.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#final-cta" class="btn-primary">
+                <span>Get started free</span>
+                <span>→</span>
+              </a>
+              <a href="#how-it-works" class="btn-secondary">
+                <span>See how it works</span>
+              </a>
+            </div>
+
+            <p class="hero-small">
+              <span>No credit card required.</span> Takes less than 1 minute.
+            </p>
+          </div>
+
+          <aside class="hero-card" aria-label="Example daily check-in">
+            <div class="hero-card-tag">Today’s check-in</div>
+            <div class="hero-card-quote">
+              “You’re allowed to slow down today. Resting isn’t failing.”
+            </div>
+            <div class="hero-card-explainer">
+              Fatigue isn’t a moral weakness. It’s your body asking for mercy, not punishment.
+            </div>
+            <div class="hero-chip-row">
+              <div class="hero-chip">Burnout · Work stress</div>
+              <div class="hero-chip">One small step: 30 second pause</div>
+            </div>
+            <div class="hero-orbit" aria-hidden="true"></div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- PROBLEM -->
+      <section class="problem">
+        <div class="container problem-inner">
+          <h2 class="section-title">Why most affirmation apps don’t work when you’re burned out</h2>
+          <p class="section-subtitle">
+            When you’re running on fumes, being told to “just think positive” can feel worse, not better.
+          </p>
+
+          <ul class="problem-list">
+            <li>They throw random quotes at you that don’t match your life.</li>
+            <li>They ignore what you’re actually going through day to day.</li>
+            <li>They sound like they were written by a robot who has never had a bad day.</li>
+          </ul>
+
+          <div class="problem-highlight">
+            <strong>SteadyWords is different.</strong>
+            It’s built for people who are tired, stressed, and still trying their best. We meet you where you are,
+            without pretending everything is fine.
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section id="how-it-works">
+        <div class="container">
+          <h2 class="section-title">How SteadyWords supports you in under 3 minutes a day</h2>
+          <p class="section-subtitle">
+            A small daily check-in that doesn’t judge you for being tired.
+          </p>
+
+          <div class="how-grid">
+            <div class="how-card">
+              <div class="how-step-badge">1</div>
+              <div class="how-card-title">Tell us what you’re dealing with</div>
+              <p class="how-card-text">
+                Choose what fits you best right now: burnout, work stress, anxiety, low mood, parenting fatigue and more.
+                No long forms. No therapy-level intake. Just a quick check-in.
+              </p>
+            </div>
+
+            <div class="how-card">
+              <div class="how-step-badge">2</div>
+              <div class="how-card-title">Get a grounded daily affirmation</div>
+              <p class="how-card-text">
+                Each day, you get a short affirmation written for people who are actually exhausted — plus a brief
+                explanation of why it matters. It’s not fluffy. It’s honest.
+              </p>
+            </div>
+
+            <div class="how-card">
+              <div class="how-step-badge">3</div>
+              <div class="how-card-title">Take one tiny step</div>
+              <p class="how-card-text">
+                Along with your affirmation, you’ll see a small, realistic action: a 20-second breath, a stretch, a glass
+                of water, one kind thought. No big life overhaul. Just one small step you can actually do.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURES -->
+      <section id="features">
+        <div class="container">
+          <h2 class="section-title">What’s inside</h2>
+          <p class="section-subtitle">
+            Gentle, realistic tools to give you a little bit of space in the middle of everything else.
+          </p>
+
+          <div class="features-grid">
+            <article class="feature-card">
+              <div class="feature-label">Feature</div>
+              <h3 class="feature-title">Daily check-in</h3>
+              <p class="feature-text">
+                A simple, honest moment with yourself each day. No streak pressure. No guilt trips. Just “how are you
+                really?”
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-label">Feature</div>
+              <h3 class="feature-title">Grounded affirmations</h3>
+              <p class="feature-text">
+                Not “you’re perfect and unstoppable.” More like: “You’re allowed to slow down today. Resting isn’t
+                failing.” Each affirmation is written with real-life stress in mind.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-label">Feature</div>
+              <h3 class="feature-title">One small step</h3>
+              <p class="feature-text">
+                Every affirmation comes with a tiny action you can take in under a minute. Because change starts with
+                something small you can actually follow through on.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-label">Feature</div>
+              <h3 class="feature-title">Favorites library</h3>
+              <p class="feature-text">
+                Save the affirmations that hit hardest for you. On rough days, you can scroll through the ones that have
+                helped before.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-label">Feature</div>
+              <h3 class="feature-title">Email or in-app reminders</h3>
+              <p class="feature-text">
+                Choose how you want to be nudged — a gentle email, or an in-app reminder at the time of day that works
+                for you.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-label">Feature</div>
+              <h3 class="feature-title">Built for burnout</h3>
+              <p class="feature-text">
+                No toxic positivity. No pressure to become an “optimized morning person.” Just support that fits into the
+                life you already have.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHO IT'S FOR -->
+      <section>
+        <div class="container">
+          <h2 class="section-title">Made for people like you</h2>
+          <p class="section-subtitle">
+            SteadyWords is for anyone who looks “fine” on the outside but is quietly running on empty.
+          </p>
+
+          <div class="who-list">
+            <div class="who-item">
+              <div class="who-bullet"></div>
+              <p>Working parents who never get to the bottom of their to-do list.</p>
+            </div>
+            <div class="who-item">
+              <div class="who-bullet"></div>
+              <p>Employees stuck between meetings, emails, and constant notifications.</p>
+            </div>
+            <div class="who-item">
+              <div class="who-bullet"></div>
+              <p>Creatives and side-hustlers trying to build something after work.</p>
+            </div>
+            <div class="who-item">
+              <div class="who-bullet"></div>
+              <p>Students feeling like they’re always behind.</p>
+            </div>
+            <div class="who-item">
+              <div class="who-bullet"></div>
+              <p>Anyone who is tired of fake positivity but still wants to feel a bit better.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section class="testimonials">
+        <div class="container">
+          <h2 class="section-title">What early users are saying</h2>
+          <p class="section-subtitle">
+            These are beta voices from people who needed something more honest than “just stay positive.”
+          </p>
+
+          <div class="test-grid">
+            <article class="test-card">
+              <p class="test-quote">
+                “Most affirmation apps make me roll my eyes. This one doesn’t. It feels like a friend who actually gets
+                it.”
+              </p>
+              <p class="test-name">— A., 35, working parent</p>
+            </article>
+
+            <article class="test-card">
+              <p class="test-quote">
+                “I open it when I’m overwhelmed at my desk. One sentence, one small action. It’s enough to help me
+                reset.”
+              </p>
+              <p class="test-name">— M., 41, project manager</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRICING -->
+      <section id="pricing" class="pricing">
+        <div class="container">
+          <h2 class="section-title">Simple, honest pricing</h2>
+          <p class="section-subtitle">
+            Start free. Upgrade only if it genuinely helps.
+          </p>
+
+          <div class="pricing-grid">
+            <article class="pricing-card">
+              <h3 class="pricing-name">Just getting by</h3>
+              <p class="pricing-tagline">For when you’re curious but cautious.</p>
+              <p class="pricing-price">$0 <span>/ month</span></p>
+              <ul class="pricing-list">
+                <li><span class="pricing-bullet"></span><span>1 daily affirmation.</span></li>
+                <li><span class="pricing-bullet"></span><span>1 main struggle category.</span></li>
+                <li><span class="pricing-bullet"></span><span>Up to 10 favorites.</span></li>
+                <li><span class="pricing-bullet"></span><span>Email or in-app reminders.</span></li>
+                <li><span class="pricing-bullet"></span><span>Access on any device (web).</span></li>
+              </ul>
+              <div class="pricing-cta">
+                <button class="btn-pricing-outline">Start free</button>
+                <p class="pricing-note">No credit card required.</p>
+              </div>
+            </article>
+
+            <article class="pricing-card featured">
+              <div class="badge-pill">Most popular</div>
+              <h3 class="pricing-name">Deeper support</h3>
+              <p class="pricing-tagline">For when you’re ready for a little more help.</p>
+              <p class="pricing-price">$9 <span>/ month · adjust later</span></p>
+              <ul class="pricing-list">
+                <li><span class="pricing-bullet"></span><span>Everything in Free.</span></li>
+                <li><span class="pricing-bullet"></span><span>Multiple struggle categories (work, parenting, anxiety and more).</span></li>
+                <li><span class="pricing-bullet"></span><span>Longer, deeper affirmations on tough days.</span></li>
+                <li><span class="pricing-bullet"></span><span>Extra grounding prompts and reflections.</span></li>
+                <li><span class="pricing-bullet"></span><span>Priority access to new features (like human audio).</span></li>
+              </ul>
+              <div class="pricing-cta">
+                <button class="btn-pricing-solid">Start 7-day free trial</button>
+                <p class="pricing-note">Cancel anytime. No hard feelings.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq">
+        <div class="container">
+          <h2 class="section-title">Frequently asked questions</h2>
+
+          <div class="faq-grid">
+            <article class="faq-item">
+              <h3 class="faq-q">Is this a replacement for therapy?</h3>
+              <p class="faq-a">
+                No. SteadyWords isn’t therapy and doesn’t replace professional help. It’s a small, daily support tool for
+                people dealing with stress, overwhelm, and low mood.
+              </p>
+            </article>
+
+            <article class="faq-item">
+              <h3 class="faq-q">What if I forget to check in?</h3>
+              <p class="faq-a">
+                That’s okay. There are no streaks here. You can turn on gentle email or in-app reminders, but missing a
+                day doesn’t “reset” anything. You can’t fail at this.
+              </p>
+            </article>
+
+            <article class="faq-item">
+              <h3 class="faq-q">I hate cheesy affirmations. Will this annoy me?</h3>
+              <p class="faq-a">
+                Honestly, probably not. SteadyWords is written for people who are skeptical of typical self-help. The
+                language is calm, grounded, and realistic.
+              </p>
+            </article>
+
+            <article class="faq-item">
+              <h3 class="faq-q">Do I have to pay right away?</h3>
+              <p class="faq-a">
+                No. You can stay on the free plan as long as you like. The Pro plan is there if you want more depth and
+                flexibility.
+              </p>
+            </article>
+
+            <article class="faq-item">
+              <h3 class="faq-q">Can I cancel the Pro plan anytime?</h3>
+              <p class="faq-a">
+                Yes. You’ll be able to cancel in a couple of clicks, and you won’t be charged again.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section id="final-cta" class="final-cta">
+        <div class="container">
+          <h2 class="section-title">Ready to give yourself one gentle moment a day?</h2>
+          <p>
+            You don’t need another massive habit to maintain. You just need one small, honest check-in that doesn’t judge
+            you for being tired.
+          </p>
+          <a href="#" class="btn-primary">
+            <span>Get started free</span>
+            <span>→</span>
+          </a>
+          <p class="hero-small" style="margin-top: 0.9rem;">
+            Takes less than a minute. No credit card needed.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container footer-inner">
+        <div>© 2025 SteadyWords. Built with care for exhausted humans.</div>
+        <div class="footer-links">
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
