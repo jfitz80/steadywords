@@ -753,6 +753,42 @@
     .footer-links a:hover {
       color: var(--text);
     }
+    /* Email signup form */
+
+    .cta-form {
+      margin-top: 1.1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cta-input {
+      min-width: min(260px, 100%);
+      padding: 0.7rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(5, 8, 22, 0.95);
+      color: var(--text);
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .cta-input::placeholder {
+      color: var(--muted);
+    }
+
+    .cta-input:focus {
+      border-color: rgba(245, 166, 35, 0.7);
+      box-shadow: 0 0 0 1px rgba(245, 166, 35, 0.4);
+    }
+
+    .cta-helper {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
 
     /* Responsive tweaks */
 
@@ -1128,7 +1164,7 @@
         </div>
       </section>
 
-      <!-- FINAL CTA -->
+           <!-- FINAL CTA -->
       <section id="final-cta" class="final-cta">
         <div class="container">
           <h2 class="section-title">Ready to give yourself one gentle moment a day?</h2>
@@ -1136,15 +1172,32 @@
             You don’t need another massive habit to maintain. You just need one small, honest check-in that doesn’t judge
             you for being tired.
           </p>
-          <a href="#" class="btn-primary">
-            <span>Get started free</span>
-            <span>→</span>
-          </a>
-          <p class="hero-small" style="margin-top: 0.9rem;">
-            Takes less than a minute. No credit card needed.
+
+          <form
+            class="cta-form"
+            action="https://buttondown.com/api/emails/embed-subscribe/SteadyWords"
+            method="post"
+            target="_blank"
+          >
+            <input
+              type="email"
+              name="email"
+              class="cta-input"
+              placeholder="Enter your email to join the SteadyWords beta"
+              required
+            />
+            <button type="submit" class="btn-primary">
+              <span>Join the beta waitlist</span>
+              <span>→</span>
+            </button>
+          </form>
+
+          <p class="cta-helper">
+            No spam. Just occasional updates and early access when SteadyWords is ready.
           </p>
         </div>
       </section>
+
     </main>
 
     <!-- FOOTER -->
