@@ -24,6 +24,167 @@
   <meta name="description" content="SteadyWords is a grounded affirmation app for people who are actually exhausted. No cheesy quotes. Just honest, gentle support in under 3 minutes a day." />
 
   <style>
+    .checkin {
+  border-top: 1px solid var(--border);
+  padding: 3rem 0 3.2rem;
+}
+
+.checkin-grid {
+  display: grid;
+  gap: 2.4rem;
+  align-items: center;
+}
+
+@media (min-width: 840px) {
+  .checkin-grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  }
+}
+
+.checkin-steps {
+  list-style: none;
+  margin-top: 1.2rem;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.checkin-steps li {
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.checkin-steps li strong {
+  display: block;
+  color: var(--text);
+  margin-bottom: 0.15rem;
+  font-weight: 600;
+}
+
+.checkin-steps li span {
+  display: block;
+}
+
+/* Phone mock */
+
+.checkin-mock {
+  display: flex;
+  justify-content: center;
+}
+
+.phone-frame {
+  width: 320px;
+  border-radius: 28px;
+  padding: 1.1rem 1rem 1rem;
+  background: radial-gradient(circle at top, #383f65, #23263f 70%);
+  border: 1px solid rgba(180, 189, 219, 0.4);
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  font-size: 0.85rem;
+}
+
+.phone-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.4rem;
+}
+
+.phone-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #5cffc8;
+  box-shadow: 0 0 12px rgba(92, 255, 200, 0.9);
+}
+
+.phone-title {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.phone-section {
+  padding: 0.65rem 0.65rem 0.7rem;
+  border-radius: 16px;
+  background: rgba(10, 14, 32, 0.75);
+  border: 1px solid rgba(118, 128, 173, 0.35);
+}
+
+.phone-section + .phone-section {
+  margin-top: 0.4rem;
+}
+
+.phone-section-highlight {
+  background: radial-gradient(circle at top left, rgba(245, 166, 35, 0.18), rgba(10, 14, 32, 0.9));
+  border-color: rgba(245, 166, 35, 0.6);
+}
+
+.phone-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+
+.phone-question {
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-bottom: 0.45rem;
+}
+
+.phone-affirmation {
+  font-size: 0.9rem;
+  color: #ffe9c2;
+  margin-bottom: 0.3rem;
+}
+
+.phone-helper {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* Chips */
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.chip {
+  border-radius: 999px;
+  border: 1px solid rgba(118, 128, 173, 0.65);
+  background: rgba(5, 8, 22, 0.7);
+  color: var(--muted);
+  padding: 0.25rem 0.7rem;
+  font-size: 0.78rem;
+  cursor: default;
+}
+
+.chip-selected {
+  border-color: rgba(245, 166, 35, 0.9);
+  background: rgba(245, 166, 35, 0.16);
+  color: #ffe9c2;
+}
+
+/* Phone button */
+
+.phone-button {
+  margin-top: 0.2rem;
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #f5a623, #f57f23);
+  color: #2b1300;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.7);
+  cursor: default;
+}
     :root {
     --bg: #1e2337;                 /* soft navy-lavender */
     --bg-soft: #2a3050;            /* muted blue-lavender */
@@ -413,7 +574,80 @@
     }
 
     /* How it works */
+    
+<section id="daily-checkin" class="checkin">
+  <div class="container checkin-grid">
+    <div class="checkin-copy">
+      <h2 class="section-title">What a daily check-in feels like</h2>
+      <p class="section-subtitle">
+        No long journals. No life overhauls. Just a 20–30 second pause to notice how you’re really doing,
+        and let SteadyWords meet you there.
+      </p>
 
+      <ul class="checkin-steps">
+        <li>
+          <strong>1. Name the feeling.</strong>
+          <span>Tap how you’re doing today: drained, overwhelmed, anxious, flat, or “not sure”.</span>
+        </li>
+        <li>
+          <strong>2. Choose what’s weighing on you.</strong>
+          <span>Work, parenting, money, health, feeling alone — or “it’s just a lot”.</span>
+        </li>
+        <li>
+          <strong>3. Receive one grounded affirmation + a tiny next step.</strong>
+          <span>No pressure. Just one sentence that understands, and one small action you can actually do.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="checkin-mock">
+      <div class="phone-frame" aria-label="Daily check-in preview">
+        <div class="phone-header">
+          <span class="phone-dot"></span>
+          <span class="phone-title">Daily check-in</span>
+        </div>
+
+        <div class="phone-section">
+          <p class="phone-label">Step 1</p>
+          <p class="phone-question">How are you feeling today?</p>
+          <div class="chip-row">
+            <button class="chip chip-selected">Drained</button>
+            <button class="chip">Overwhelmed</button>
+            <button class="chip">Anxious</button>
+            <button class="chip">Flat</button>
+            <button class="chip">Not sure</button>
+          </div>
+        </div>
+
+        <div class="phone-section">
+          <p class="phone-label">Step 2</p>
+          <p class="phone-question">What’s weighing on you most?</p>
+          <div class="chip-row">
+            <button class="chip">Work</button>
+            <button class="chip">Parenting</button>
+            <button class="chip">Money</button>
+            <button class="chip">Health</button>
+            <button class="chip">Everything</button>
+          </div>
+        </div>
+
+        <div class="phone-section phone-section-highlight">
+          <p class="phone-label">Step 3</p>
+          <p class="phone-question">Today’s affirmation</p>
+          <p class="phone-affirmation">
+            “You’re carrying more than people see. It makes sense that you’re tired.”
+          </p>
+          <p class="phone-helper">
+            One tiny step: unclench your jaw and let your shoulders drop, just for 20 seconds.
+          </p>
+        </div>
+
+        <button class="phone-button">This is what I need</button>
+      </div>
+    </div>
+  </div>
+</section>
+    
     .how-grid {
       display: grid;
       gap: 1.4rem;
