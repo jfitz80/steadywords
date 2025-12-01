@@ -1,96 +1,493 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Analytics (optional – same as homepage) -->
+  <script async defer data-domain="steadywords" src="https://plausible.io/js/script.js"></script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — SteadyWords</title>
-  <meta name="description" content="SteadyWords offers gentle support for exhausted humans — a small space to breathe, feel seen, and stop pretending.">
 
-  <meta property="og:title" content="About — SteadyWords" />
-  <meta property="og:description" content="Gentle support for exhausted humans. A place to feel understood, validated, and less alone." />
+  <title>About SteadyWords – A place where you don’t have to pretend you’re okay</title>
+  <meta name="description" content="SteadyWords was born from exhaustion, grief, and the pressure to hold everything together. It’s a small, honest space for people who are tired but still trying." />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://jfitz80.github.io/steadywords/about.html" />
+
+  <!-- Favicon / OG image (reuse from main site) -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="/favicon.ico" as="image">
+  <link rel="preload" href="/og-image.png" as="image">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="About SteadyWords – Real affirmations for exhausted humans" />
+  <meta property="og:description" content="SteadyWords was built for people who are tired, grieving, burnt out and still trying their best. A place where you don’t have to pretend you’re okay." />
   <meta property="og:image" content="https://jfitz80.github.io/steadywords/og-image.png" />
   <meta property="og:url" content="https://jfitz80.github.io/steadywords/about.html" />
   <meta property="og:type" content="website" />
+  <meta property="twitter:card" content="summary_large_image" />
 
   <style>
     :root {
-      --bg: #f8f4ff;
-      --bg-soft: #efe9ff;
-      --text: #2e2a3b;
-      --accent: #a28cff;
-      --muted: #6e6a7f;
-      --radius-lg: 20px;
-      --radius-xl: 32px;
-      --max-width: 800px;
+      --bg: #1e2337;
+      --bg-soft: #2a3050;
+      --accent: #f5a623;
+      --accent-soft: rgba(245,166,35,0.12);
+      --text: #fafaff;
+      --muted: #b4bddb;
+      --border: #3a3f59;
+      --radius-lg: 18px;
+      --radius-xl: 28px;
+      --shadow-soft: 0 18px 40px rgba(0,0,0,0.45);
+      --max-width: 960px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      background: linear-gradient(135deg, var(--bg) 0%, var(--bg-soft) 100%);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #4b5583, #1e2337 55%);
       color: var(--text);
-      padding: 2rem;
       line-height: 1.6;
-      text-align: left;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
     }
 
     .container {
+      width: 100%;
       max-width: var(--max-width);
-      background: white;
-      padding: 3rem;
-      border-radius: var(--radius-xl);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+    /* Header */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 8, 22, 0.92),
+        rgba(5, 8, 22, 0.85),
+        transparent
+      );
+      border-bottom: 1px solid rgba(37, 43, 63, 0.7);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.5rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .logo-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #ffe9c2, #f5a623);
+      box-shadow: 0 0 25px rgba(245,166,35,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #2d1902;
       font-weight: 700;
     }
 
-    p {
-      margin-bottom: 1.5rem;
-      color: var(--muted);
-      font-size: 1.1rem;
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      font-size: 0.9rem;
     }
 
-    .footer {
-      margin-top: 2rem;
+    nav a {
+      color: var(--muted);
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--text);
+      opacity: 0.9;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(245,166,35,0.7);
+      background: radial-gradient(circle at top left, #f5a62322, #141827 65%);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 35px rgba(0,0,0,0.6);
+    }
+
+    /* Layout */
+
+    main {
+      flex: 1;
+    }
+
+    section {
+      padding: 3rem 0;
+    }
+
+    .about-hero {
+      padding-top: 3.4rem;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 650;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 40rem;
+    }
+
+    .about-card {
+      margin-top: 1.8rem;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top left, #343b5c, #232845 70%);
+      border: 1px solid rgba(180,189,219,0.35);
+      box-shadow: var(--shadow-soft);
+      padding: 1.6rem 1.5rem 1.6rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .about-card p + p {
+      margin-top: 0.9rem;
+    }
+
+    .about-highlight {
+      color: #ffe9c2;
+    }
+
+    .about-list {
+      margin-top: 1.4rem;
+      list-style: none;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    .about-list li {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .about-bullet {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #f5a623;
+      margin-top: 0.45rem;
+      flex-shrink: 0;
+    }
+
+    .beliefs-grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.6rem;
+    }
+
+    .belief-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: rgba(10,14,32,0.9);
+      padding: 0.9rem 1rem;
       font-size: 0.9rem;
       color: var(--muted);
-      text-align: center;
     }
 
-    a.button {
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      padding: 0.9rem 1.8rem;
-      border-radius: var(--radius-lg);
-      margin-top: 1rem;
-      text-decoration: none;
+    .belief-title {
       font-weight: 600;
-      font-size: 1.05rem;
+      margin-bottom: 0.25rem;
+      color: var(--text);
+      font-size: 0.96rem;
+    }
+
+    /* CTA back */
+
+    .about-cta {
+      text-align: center;
+      margin-top: 2.1rem;
+    }
+
+    .about-cta p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.75rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #f5a623, #f57f23);
+      color: #2b1300;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.04);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.7);
+    }
+
+    /* Footer */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.3rem 0 1.8rem;
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    @media (max-width: 640px) {
+      nav .hide-on-mobile {
+        display: none;
+      }
+      .header-inner {
+        padding-inline: 1rem;
+      }
     }
   </style>
 </head>
-
 <body>
-  <div class="container">
-    <h1>About SteadyWords</h1>
+  <div class="page">
+    <!-- HEADER -->
+    <header>
+      <div class="header-inner">
+        <a href="/steadywords/" class="logo">
+          <div class="logo-mark">SW</div>
+          <span>SteadyWords</span>
+        </a>
 
-    <p>SteadyWords exists for people who are tired — not just physically, but emotionally. People who wake up each day already carrying more than anyone can see. People quietly holding families together, keeping jobs afloat, managing crises, grief, burnout, and expectations they never asked for.</p>
+        <nav>
+          <a href="/steadywords/#features" class="hide-on-mobile">Features</a>
+          <a href="/steadywords/#how-it-works" class="hide-on-mobile">How it works</a>
+          <a href="/steadywords/#pricing" class="hide-on-mobile">Pricing</a>
+          <a href="/steadywords/#faq" class="hide-on-mobile">FAQ</a>
+          <a href="/steadywords/" class="nav-cta">
+            <span>Back to main site</span>
+            <span>→</span>
+          </a>
+        </nav>
+      </div>
+    </header>
 
-    <p>Most of us aren’t looking for motivation. We’re looking for relief. For validation. For a moment that feels gentle instead of demanding. For a voice that says, “It makes sense you’re tired. You’re doing your best.”</p>
+    <main>
+      <!-- ABOUT HERO -->
+      <section class="about-hero">
+        <div class="container">
+          <p class="section-kicker">About</p>
+          <h1 class="section-title">This wasn’t built from optimism. It was built from exhaustion.</h1>
+          <p class="section-subtitle">
+            SteadyWords started with one very tired human who was trying to hold work, family,
+            grief, and everyday life together — and couldn’t find any space that felt honest.
+          </p>
 
-    <p>SteadyWords is a small pause in the middle of your day — a place where you don’t have to pretend. Where you don’t have to smile if you don’t feel like it. Where it’s okay to be overwhelmed, heartbroken, anxious, or simply exhausted by life.</p>
+          <div class="about-card">
+            <p>
+              Most affirmation apps felt wrong. They were full of rainbow quotes and “you’re
+              unstoppable” slogans that didn’t match what real life looked like:
+              <span class="about-highlight">pressure at work, kids struggling, grief that
+              doesn’t go away, and the constant fear of dropping something important.</span>
+            </p>
+            <p>
+              SteadyWords grew out of that gap — from the feeling of being unseen at work,
+              overwhelmed at home, and quietly carrying more than anyone realised. It’s built
+              for people who are still showing up, even when they feel empty.
+            </p>
+            <p>
+              This isn’t a place that demands you “stay positive”. It’s a place that says:
+              <span class="about-highlight">“Of course you’re tired. It makes sense.
+              You’re allowed to stop pretending you’re okay for a minute.”</span>
+            </p>
+          </div>
+        </div>
+      </section>
 
-    <p>You deserve to feel seen. You deserve to feel understood. And even if the world doesn’t say it out loud, you have so much to offer. More than you realize.</p>
+      <!-- WHO IT'S FOR -->
+      <section>
+        <div class="container">
+          <h2 class="section-title">Who SteadyWords is for</h2>
+          <p class="section-subtitle">
+            If any of this sounds like you, you’re in the right place.
+          </p>
 
-    <a class="button" href="https://jfitz80.github.io/steadywords/">Back to homepage</a>
+          <ul class="about-list">
+            <li>
+              <span class="about-bullet"></span>
+              <span>You feel sad or flat more often than you’d like, but still drag yourself through the day.</span>
+            </li>
+            <li>
+              <span class="about-bullet"></span>
+              <span>You’re supporting other people — kids, partner, family, colleagues — and rarely have space for your own feelings.</span>
+            </li>
+            <li>
+              <span class="about-bullet"></span>
+              <span>You’re scared of burning out or losing your job, even though your work no longer feels meaningful.</span>
+            </li>
+            <li>
+              <span class="about-bullet"></span>
+              <span>You’re tired of advice that assumes you have loads of free time, energy, or money to “fix” everything.</span>
+            </li>
+            <li>
+              <span class="about-bullet"></span>
+              <span>You secretly just want someone to say, “I see how hard you’re trying. It makes sense you feel this way.”</span>
+            </li>
+          </ul>
+        </div>
+      </section>
 
-    <div class="footer">Built with care for exhausted humans.</div>
+      <!-- BELIEFS -->
+      <section>
+        <div class="container">
+          <h2 class="section-title">What SteadyWords believes</h2>
+          <p class="section-subtitle">
+            Behind every feature is a simple set of beliefs about what exhausted humans actually need.
+          </p>
+
+          <div class="beliefs-grid">
+            <article class="belief-card">
+              <h3 class="belief-title">Validation first, advice later</h3>
+              <p>
+                Most of us don’t need motivational speeches. We need someone to say,
+                “What you’re feeling makes sense,” before anything else.
+              </p>
+            </article>
+
+            <article class="belief-card">
+              <h3 class="belief-title">Tiny is better than nothing</h3>
+              <p>
+                Big life overhauls feel impossible when you’re drained. A 20-second pause,
+                one kind thought, or a single deep breath is enough to count as care.
+              </p>
+            </article>
+
+            <article class="belief-card">
+              <h3 class="belief-title">You shouldn’t have to perform being okay</h3>
+              <p>
+                You deserve at least one corner of your day where you don’t have to put on
+                a brave face — where you can be honest without being judged.
+              </p>
+            </article>
+
+            <article class="belief-card">
+              <h3 class="belief-title">Being tired doesn’t mean you’re failing</h3>
+              <p>
+                Exhaustion isn’t a moral weakness. It’s a signal. SteadyWords exists to listen
+                to that signal and respond with gentleness, not shame.
+              </p>
+            </article>
+          </div>
+
+          <div class="about-cta">
+            <p>
+              If any part of this feels like your life, SteadyWords was built with you in mind.
+            </p>
+            <a href="/steadywords/#final-cta" class="btn-primary">
+              <span>Join the beta waitlist</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container footer-inner">
+        <div>© 2025 SteadyWords. Built with care for exhausted humans.</div>
+        <div class="footer-links">
+          <a href="/steadywords/about.html">About</a>
+          <a href="/steadywords/#contact">Contact</a>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </footer>
   </div>
 </body>
 </html>
