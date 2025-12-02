@@ -149,14 +149,21 @@ html {
     }
 
     nav a {
-      color: var(--muted);
-      transition: color 0.2s ease, opacity 0.2s ease;
-    }
+    color: var(--muted);
+    opacity: 0.85;
+    position: relative;
+    transition:
+      color 0.2s ease,
+      opacity 0.2s ease,
+      text-shadow 0.2s ease;
+  }
 
-    nav a:hover {
-      color: var(--text);
-      opacity: 0.9;
-    }
+  nav a:hover {
+    color: var(--text);
+    opacity: 1;
+    text-shadow: 0 0 6px rgba(245, 166, 35, 0.35);
+  }
+
 
     .nav-cta {
       display: inline-flex;
@@ -1679,11 +1686,12 @@ html {
       <div class="container footer-inner">
         <div>© 2025 SteadyWords. Built with care for exhausted humans.</div>
         <div class="footer-links">
-          <a href="/steadywords/about.html">About</a>
-          <a href="#">Contact</a>
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
+          <a href="/steadywords/about">About</a>
+          <a href="/steadywords/contact">Contact</a>
+          <a href="/steadywords/privacy">Privacy</a>
+          <a href="/steadywords/terms">Terms</a>
         </div>
+
       </div>
     </footer>
   </div>
