@@ -369,9 +369,16 @@
 
 .checkin {
   border-top: 1px solid var(--border);
-  padding: 2.2rem 0 3.2rem;   /* a bit less top space */
-  scroll-margin-top: 70px;    /* section lands closer to the top */
+  padding: 2.2rem 0 3.2rem;
+  scroll-margin-top: 70px;
 }
+
+@media (max-width: 640px) {
+  .checkin {
+    scroll-margin-top: 100px;  /* extra breathing room on small screens */
+  }
+}
+
 .checkin-grid {
   display: grid;
   gap: 2.4rem;
